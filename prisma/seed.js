@@ -8,8 +8,6 @@ async function seed() {
     },
   });
 
-  console.log("Customer created", createdCustomer);
-
   // Add your code here
   const createdContact = await prisma.contact.create({
     data: {
@@ -26,13 +24,26 @@ async function seed() {
     },
   });
 
+  const createdScreen = await prisma.screen.create({
+    data: {
+      number: 1,
+    },
+  });
+
   const createdScreening = await prisma.screening.create({
     data: {
       startsAt: "2022-06-07T19:20:30.451Z",
       movieId: 1,
+      screenId: 1,
     },
   });
 
+  const createdTicket = await prisma.ticket.create({
+    data: {
+      customerId: 1,
+      screeningId: 1,
+    },
+  });
   process.exit(0);
 }
 
