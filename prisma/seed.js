@@ -19,7 +19,20 @@ async function seed() {
     },
   });
 
-  // Don't edit any of the code below this line
+  const createdMovie = await prisma.movie.create({
+    data: {
+      title: "Before Sunrise",
+      runtimeMins: 95,
+    },
+  });
+
+  const createdScreening = await prisma.screening.create({
+    data: {
+      startsAt: "2022-06-07T19:20:30.451Z",
+      movieId: 1,
+    },
+  });
+
   process.exit(0);
 }
 
